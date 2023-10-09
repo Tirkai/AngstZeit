@@ -1,0 +1,7 @@
+[gd_scene load_steps=2 format=3 uid="uid://cmeysi8vg8flv"]
+
+[ext_resource type="PackedScene" uid="uid://dsorl7t638sk2" path="res://Source/Creature/Root/Scenes/Creature.tscn" id="1_ewtw1"]
+
+[node name="MainWorld" type="Node2D"]
+
+[node name="Creature" parent="." instance=ExtResource("1_ewtw1")]

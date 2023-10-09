@@ -1,0 +1,37 @@
+[gd_scene load_steps=6 format=3 uid="uid://dsorl7t638sk2"]
+
+[ext_resource type="Script" path="res://Source/Creature/CreatureDamage/Scripts/CreatureDamageController.cs" id="1_kv15h"]
+[ext_resource type="Script" path="res://Source/Creature/CreatureStat/Stats/Armor/Scripts/CreatureArmorController.cs" id="2_lkgpu"]
+[ext_resource type="Script" path="res://Source/Creature/CreatureStat/Stats/Armor/Scripts/CreatureArmorAbsorptionStat.cs" id="3_rop7j"]
+[ext_resource type="Script" path="res://Source/Creature/CreatureStat/Stats/Armor/Scripts/CreatureArmorDurabilityStat.cs" id="4_mlqku"]
+[ext_resource type="Script" path="res://Source/Creature/CreatureDefenceLayer/Scripts/ArmorDefenceLayer.cs" id="5_s0ebf"]
+
+[node name="Creature" type="Node2D"]
+
+[node name="CreatureDamageController" type="Node" parent="." node_paths=PackedStringArray("defenceLayers")]
+unique_name_in_owner = true
+script = ExtResource("1_kv15h")
+defenceLayers = [NodePath("../CreatureDefenceLayers/ArmorDefenceLayer")]
+
+[node name="Timer" type="Timer" parent="CreatureDamageController"]
+
+[node name="CreatureStats" type="Node" parent="."]
+
+[node name="CreatureArmorController" type="Node" parent="CreatureStats"]
+unique_name_in_owner = true
+script = ExtResource("2_lkgpu")
+
+[node name="CreatureArmorAbsorptionStat" type="Node" parent="CreatureStats/CreatureArmorController"]
+unique_name_in_owner = true
+script = ExtResource("3_rop7j")
+Value = 40.0
+
+[node name="CreatureArmorDurabilityStat" type="Node" parent="CreatureStats/CreatureArmorController"]
+unique_name_in_owner = true
+script = ExtResource("4_mlqku")
+Value = 1000.0
+
+[node name="CreatureDefenceLayers" type="Node" parent="."]
+
+[node name="ArmorDefenceLayer" type="Node" parent="CreatureDefenceLayers"]
+script = ExtResource("5_s0ebf")
